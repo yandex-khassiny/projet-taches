@@ -1,0 +1,217 @@
+/* Styles pour les pages d'authentification */
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #4361ee, #3a0ca3);
+    padding: 20px;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 400px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.auth-header {
+    padding: 30px;
+    text-align: center;
+    background: linear-gradient(135deg, #4361ee, #3a0ca3);
+    color: white;
+}
+
+.auth-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.auth-header p {
+    opacity: 0.9;
+    margin: 10px 0 0;
+}
+
+.auth-form {
+    padding: 30px;
+}
+
+.auth-form .form-label {
+    font-weight: 500;
+    color: #495057;
+    margin-bottom: 8px;
+}
+
+.auth-form .input-group {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #dee2e6;
+    transition: all 0.3s;
+}
+
+.auth-form .input-group:focus-within {
+    border-color: #4361ee;
+    box-shadow: 0 0 0 0.25rem rgba(67, 97, 238, 0.25);
+}
+
+.auth-form .input-group-text {
+    background-color: #f8f9fa;
+    border: none;
+    color: #6c757d;
+    min-width: 45px;
+    justify-content: center;
+}
+
+.auth-form .form-control {
+    border: none;
+    padding: 12px;
+    font-size: 1rem;
+}
+
+.auth-form .form-control:focus {
+    box-shadow: none;
+}
+
+.auth-form .form-check-input:checked {
+    background-color: #4361ee;
+    border-color: #4361ee;
+}
+
+.auth-form .btn-primary {
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #4361ee, #3a0ca3);
+    border: none;
+    transition: all 0.3s;
+}
+
+.auth-form .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(67, 97, 238, 0.4);
+}
+
+.auth-form .btn-primary:active {
+    transform: translateY(0);
+}
+
+.auth-links {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e9ecef;
+}
+
+.auth-links a {
+    color: #4361ee;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.auth-links a:hover {
+    color: #3a0ca3;
+    text-decoration: underline;
+}
+
+/* Validation styles */
+.is-invalid {
+    border-color: #dc3545 !important;
+}
+
+.invalid-feedback {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 5px;
+}
+
+/* Password strength indicator */
+.password-strength {
+    margin-top: 5px;
+    height: 5px;
+    border-radius: 3px;
+    background: #e9ecef;
+    overflow: hidden;
+}
+
+.strength-meter {
+    height: 100%;
+    width: 0;
+    transition: width 0.3s, background-color 0.3s;
+}
+
+.strength-weak {
+    background-color: #dc3545;
+    width: 33%;
+}
+
+.strength-medium {
+    background-color: #ffc107;
+    width: 66%;
+}
+
+.strength-strong {
+    background-color: #198754;
+    width: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+    .auth-card {
+        margin: 20px;
+    }
+    
+    .auth-header {
+        padding: 20px;
+    }
+    
+    .auth-form {
+        padding: 20px;
+    }
+}
+
+/* Dark mode support */
+[data-bs-theme="dark"] .auth-card {
+    background-color: #212529;
+    color: #f8f9fa;
+}
+
+[data-bs-theme="dark"] .auth-form .input-group {
+    background-color: #2d3748;
+    border-color: #4a5568;
+}
+
+[data-bs-theme="dark"] .auth-form .input-group-text {
+    background-color: #4a5568;
+    color: #e2e8f0;
+}
+
+[data-bs-theme="dark"] .auth-form .form-control {
+    background-color: #2d3748;
+    color: #f8f9fa;
+}
+
+[data-bs-theme="dark"] .auth-form .form-label {
+    color: #e2e8f0;
+}

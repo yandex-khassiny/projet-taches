@@ -1,0 +1,13 @@
+.git
+.gitignore
+node_modules/
+*.log
+.DS_Store
+.vscode/
+.idea/
+docker-compose.yml
+README.md
+.env
+src/tmp/
+src/logs/
+src/uploads/
