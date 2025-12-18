@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: task-manager-app
+    env: php
+    buildCommand: ""
+    startCommand: php -S 0.0.0.0:$PORT
+    healthCheckPath: /src/auth/login.php
+    envVars:
+      - key: PHP_VERSION
+        value: 8.1.0
+      - key: APP_ENV
+        value: production
