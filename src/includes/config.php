@@ -17,12 +17,12 @@ if (isset($_SERVER['RENDER'])) {
 }
 
 // Méthode 2 : Vérifier l'URL
-if (isset($_SERVER['SERVER_NAME']) && strpos($_SERVER['SERVER_NAME'], 'onrender.com') !== false) {
+if (isset($_SERVER['HTTP_HOST']) && strpos($_SERVER['HTTP_HOST'], 'onrender.com') !== false) {
     $isOnInternet = true;
 }
 
-// Méthode 3 : Vérifier l'adresse IP
-if (isset($_SERVER['REMOTE_ADDR']) && $_SERVER['REMOTE_ADDR'] !== '127.0.0.1') {
+// Méthode 3 : Vérifier l'adresse IP (en dernier recours)
+if (isset($_SERVER['REMOTE_ADDR']) && $_SERVER['REMOTE_ADDR'] !== '127.0.0.1' && !$isOnInternet) {
     // Pas localhost, probablement sur Internet
     $isOnInternet = true;
 }
@@ -32,11 +32,11 @@ if ($isOnInternet) {
     // CONFIGURATION POUR INTERNET (RENDER)
     // ============================================
     
-    // URL de votre site sur Internet (à changer plus tard)
-    define('BASE_URL', 'https://votre-app.onrender.com');
+    // URL dynamique - CORRECTION ICI
+    define('BASE_URL', 'https://' . $_SERVER['HTTP_HOST']);
     
-    // Base de données SQLite (la plus simple pour débuter)
-    $dbPath = '/tmp/task_manager.db';
+    // Base de données SQLite - CORRECTION ICI
+    $dbPath = __DIR__ . '/../../database.db';
     
     try {
         $pdo = new PDO("sqlite:" . $dbPath);
@@ -164,9 +164,11 @@ function requireAdmin() {
 if ($isOnInternet) {
     error_reporting(0);
     ini_set('display_errors', 0);
+    ini_set('log_errors', 1); // Ajout: logger les erreurs
 } else {
     // En local, montrer les erreurs
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
 }
 ?>
