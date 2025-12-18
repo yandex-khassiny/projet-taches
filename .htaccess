@@ -1,2 +1,0 @@
-﻿# Redirection vers l'application
-Redirect 302 / https://%{HTTP_HOST}/src/auth/login.php
